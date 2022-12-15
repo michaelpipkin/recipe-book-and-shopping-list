@@ -2,9 +2,17 @@
   <div class="col-xs-10">
     <app-edit-shopping-list></app-edit-shopping-list>
     <hr />
-    <ul class="list-group">
-      <li *ngFor="let ingredient of ingredients">
-        <a class="list-group-item" style="cursor: pointer;">{{ ingredient.amount }} {{ ingredient.name }}</a>
+    <ul class="list-group" style="list-style-type: none">
+      <li *ngFor="let ingredient of ingredients; let i = index">
+        <div class="list-group-item" style="border: none; padding: 0;">
+          <input type="checkbox" name="ingredient" [checked]="ingredient.checked" (change)="onCheckChanged(i)" />
+          <label for="ingredient"
+                 [class]="ingredient.checked ? 'strikethrough': ''"
+                 style="margin-left: 8px; cursor: pointer;"
+                 (click)="onEditItem(i)">
+            {{ ingredient.amount }} {{ ingredient.name }}
+          </label>
+        </div>
       </li>
     </ul>
   </div>

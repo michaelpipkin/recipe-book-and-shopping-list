@@ -2,5 +2,9 @@
 // accessible as properties of the class without explicitly declaring them.
 
 export class Ingredient {
-  constructor(public name: string, public amount: string) { }
+  constructor(public name: string, public amount: string) {
+    this.checked = false;
+  }
+
+  public checked: boolean;
 }
